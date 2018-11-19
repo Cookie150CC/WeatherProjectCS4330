@@ -123,7 +123,7 @@ def findStrongAvgWind():
             date = row[7]
             avgwind = row[8]
             
-            print("%s, %s, %s, %s, %s" % statid, name, state, date, avgwind)
+            print("%s, %s, %s, %s, %s" % (statid, name, state, date, avgwind))
             
     except:
         print("Error: unable to fetch data")
@@ -189,11 +189,11 @@ def findMaxSnowDepth():
     except:
         print("Error: unable to fetch data")
 
-def findWeather(statid):
+def findWeatherDay(statid, date):
     sql = "SELECT * FROM station, precipitation, wind, temperature\
     where temperature.StationID = station.StationID and temperature.StationID = wind.StationID and\
     temperature.StationID = precipitation.StationID and temperature.Date = wind.Date and\
-    temperature.date = precipitation.date and station.state = '%s'" % (statid)
+    temperature.date = precipitation.date and temperature.date = '%s' and station.state = '%s'" % (date,statid)
     
     try:
         cursor.execute(sql)
@@ -224,16 +224,76 @@ def findWeather(statid):
             
     except:
         print("Error: unable to fetch data")
- 
 
-findMaxTemp()
+def findWeatherRange(statid, fromdate, todate):
+    sql = "SELECT * FROM station, precipitation, wind, temperature\
+    where temperature.StationID = station.StationID and temperature.StationID = wind.StationID and\
+    temperature.StationID = precipitation.StationID and temperature.Date = wind.Date and\
+    temperature.date = precipitation.date and temperature.date >= '%s' \
+    and temperature.date <= '%s' and station.state = '%s'" % (fromdate, todate, statid)
+    
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()      
+        for row in results:
+            statid = row[0]
+            name = row[1]
+            state = row[2]
+            date = row[7]
+            precip = row[8]
+            snow = row[9]
+            depth = row[10]
+            avgwind = row[13]
+            fast2min = row[14]
+            fast5sec = row[15]
+            peakgust = row[16]
+            fastmilespd = row[17]
+            avgtemp = row[20]
+            maxtemp = row[21]
+            mintemp = row[22]
+            obstemp = row[23]
+            
+            print("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s" %
+                  (statid, name, state, date, 
+                  avgtemp, maxtemp, mintemp, obstemp,
+                  precip, snow, depth,
+                  avgwind, fast2min, fast5sec, peakgust, fastmilespd))
+            
+    except:
+        print("Error: unable to fetch data") 
+
+def listStations():
+    sql = "SELECT * FROM weather.station"
+    
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        for row in results:
+            statid = row[0]
+            name = row[1]
+            state = row[2]
+            lat = row[3]
+            long = row[4]
+            elevation = row[5]
+            print(statid, name, state, lat, long, elevation)
+    
+    except:
+        print("Error: unable to fetch data") 
+    
+    
+    
+    
+findHottestDays()
 print()
-findMaxSnowfall()
+findColdestDays()
 print()
-findStrongAvgWindUser(15)
+#findStrongAvgWindUser(15)
 print()
+listStations()
 state = 'MI'
-findWeather(state)
+date = '2018-08-01'
+todate = '2018-09-01'
+#findWeatherRange(state, date, todate)
     
 
 db.close()
