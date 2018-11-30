@@ -6,7 +6,15 @@
         <title>Howdy!</title>
     </head>
     <body>
+	{% load staticfiles %}
+	<script type="text/javascript" src="{% static 'twitter_bootstrap/js/transition.js' %}"></script>
         <h1>Howdy! I am Learning Django!</h1>
      <a href="/about/">About Me</a>
+     <div class="input-group date" data-provide="datepicker">
+    <input type="text" class="form-control">
+    <div class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+    </div>
+</div>
     </body>
 </html>
