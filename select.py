@@ -11,10 +11,23 @@ def findMaxTemp():
     try:
         cursor.execute(sql)
         results = cursor.fetchall()
-        print("Max Temperature is: %s" % (results))
+        print("Max Temperature is: %s" % (results[0]))
             
     except:
         print("Error: unable to fetch data")
+        
+def findMaxTempState(statid):
+    sql = "SELECT max(temperature.maxtemp) FROM STATION, TEMPERATURE\
+            WHERE station.stationid = temperature.stationid and station.state = '%s'"% (statid)
+    
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchone()
+        print("Max Temperature for %s is: %s" % (statid, results[0]))
+            
+    except:
+        print("Error: unable to fetch data")
+    
 
 def findMinTemp():
     sql = "SELECT min(temperature.maxtemp) FROM STATION, TEMPERATURE\
@@ -24,11 +37,23 @@ def findMinTemp():
         cursor.execute(sql)        
         results = cursor.fetchall()
         
-        print("Min Temperature is: %s" % (results))
+        print("Min Temperature is: %s" % (results[0]))
 
     except:
         print("Error: unable to fetch data")
 
+def findMinTempState(statid):
+    sql = "SELECT min(temperature.maxtemp) FROM STATION, TEMPERATURE\
+            WHERE station.stationid = temperature.stationid and station.state = '%s'"% (statid)
+    
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchone()
+        print("Min Temperature for %s is: %s" % (statid, results[0]))
+            
+    except:
+        print("Error: unable to fetch data")
+        
 def findHottestDays():
     sql = "SELECT * FROM STATION, TEMPERATURE\
         WHERE station.stationid = temperature.stationid and\
@@ -78,7 +103,7 @@ def findMaxAvgWind():
         cursor.execute(sql)        
         results = cursor.fetchall()
         
-        print("Max Average Wind is: %s" % (results))
+        print("Max Average Wind is: %s" % (results[0]))
             
     except:
         print("Error: unable to fetch data")
@@ -91,7 +116,7 @@ def findMaxSustainedWind():
         cursor.execute(sql)        
         results = cursor.fetchall()
         
-        print("Max Sustained Wind is: %s" % (results))
+        print("Max Sustained Wind is: %s" % (results[0]))
             
     except:
         print("Error: unable to fetch data")
@@ -104,7 +129,7 @@ def findMaxWindGust():
         cursor.execute(sql)        
         results = cursor.fetchall()
         
-        print("Max Average Gust is: %s" % (results))
+        print("Max Average Gust is: %s" % (results[0]))
             
     except:
         print("Error: unable to fetch data")
@@ -148,8 +173,6 @@ def findStrongAvgWindUser(wind):
     except:
         print("Error: unable to fetch data")
         
-    
-    
 def findMaxPrecip():
     sql = "SELECT max(precipitation.precip) FROM STATION, PRECIPITATION\
         WHERE station.stationid = precipitation.stationid"
@@ -158,7 +181,7 @@ def findMaxPrecip():
         cursor.execute(sql)        
         results = cursor.fetchall()
         
-        print("Max Precipitation is: %s" % (results))
+        print("Max Precipitation is: %s" % (results[0]))
             
     except:
         print("Error: unable to fetch data")
@@ -171,7 +194,7 @@ def findMaxSnowfall():
         cursor.execute(sql)        
         results = cursor.fetchall()
         
-        print("Max Snowfall is: %s" % (results))
+        print("Max Snowfall is: %s" % (results[0]))
             
     except:
         print("Error: unable to fetch data")
@@ -184,7 +207,7 @@ def findMaxSnowDepth():
         cursor.execute(sql)        
         results = cursor.fetchall()
         
-        print("Max Snow Depth is: %s" % (results))
+        print("Max Snow Depth is: %s" % (results[0]))
             
     except:
         print("Error: unable to fetch data")
@@ -282,7 +305,7 @@ def listStations():
     
     
     
-    
+
 findHottestDays()
 print()
 findColdestDays()
@@ -294,6 +317,7 @@ state = 'MI'
 date = '2018-08-01'
 todate = '2018-09-01'
 #findWeatherRange(state, date, todate)
-    
+print()
+findMinTempState(state)
 
 db.close()
