@@ -1,10 +1,14 @@
 <?php
-  $user = 'root';
-  $pass = '';
+  $servername = "localhost";
+  $username = "root";
+  $password = "your_password";
+  $dbname = "weather";
 
-  if(!mysqli_connect("localhost",$user,$pass,'weather'))
-  {
-       die("shit... something didn't work... \n".mysqli_error());
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
   }
 
 ?>
