@@ -12,30 +12,15 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 <body>
-<div id="Kalamazoo" class="tabcontent">
-  <h1>The Weather App <i class="fas fa-cloud-sun fa-2x"></i></i></h1>
-  <h2>Kalamazoo, MI</h2>
-</div>
 
-<div id="Other1" class="tabcontent">
-  <h1>The Weather App <i class="fas fa-cloud-sun fa-2x"></i></i></h1>
-  <h2>Other1, US</h2>
-</div>
-
-<div id="Other2" class="tabcontent">
-  <h1>The Weather App <i class="fas fa-cloud-sun fa-2x"></i></i></h1>
-  <h2>Other2, US</h2>
-</div>
-
-<div id="Other3" class="tabcontent">
-  <h1>The Weather App <i class="fas fa-cloud-sun fa-2x"></i></i></h1>
-  <h2>Other3, US</h2>
-</div>
-
-<button class="tablink" onclick="openCity('Kalamazoo', this, '#336699')" id="defaultOpen">Kalamazoo</button>
-<button class="tablink" onclick="openCity('Other1', this, '#339966')">Other1</button>
-<button class="tablink" onclick="openCity('Other2', this, '#336699')">Other2</button>
-<button class="tablink" onclick="openCity('Other3', this, '#339966')">Other3</button>
+<ul>
+  <li><a href="index.php?station=US1MTGN0011">Kalamazoo, MI</a></li>
+  <li><a href="index.php?station=USC00090140">Oxnard, CA</a></li>
+  <li><a href="index.php?station=USC00503502">International Falls, MN</a></li>
+  <li><a href="index.php?station=USW00014918">Haines, AK</a></li>
+  <li><a href="index.php?station=USW00093110">Albany, GA</a></li>
+  <li><a href="index.php?station=USW00094815">Bozeman, MT</a></li>
+</ul>
 
 
 <div class="row_container">
@@ -192,8 +177,61 @@
 </div>
 
 <script>
+    function active(tab){
+        console.log(tab)
+        if (window.location.href.includes(tab)){
+            return "active";
+        }
+    }
+    function start(){
+        if (!window.location.href.includes(cityName)){
+            updateVar("city", cityName);
+            // openCity(cityName,elmnt,color);
+        }
+    }
+
+    function updateVar(start, end) {
+        let url = window.location.href;
+        let tmp1 = url.split("?");
+        let base = tmp1[0];
+        let tmp2 = tmp1[1].split("&");
+        let newPart = "?";
+        let varName1="start";
+        let varName2="end";
+        for (let i=0; i<tmp2.length; i++){
+            if (tmp2[i].includes(varName1)){
+                tmp2[i] = varName1 + "=" + start;
+            }
+            if (tmp2[i].includes(varName1)){
+                tmp2[i] = varName2 + "=" + end;
+            }
+        }
+
+        for(let i=0; i<tmp2.length-1; i++){
+            newPart = newPart + tmp2[i] + "&";
+        }
+        newPart = newPart + tmp2[tmp2.length-1]
+
+        // console.log("base is", base);
+        console.log("new part", newPart);
+
+        if (url.includes("start") && url.includes("end")){
+            window.location.href = newPart;
+        }
+        else{
+            window.location.href = newPart + "&" + varName1 + "=" + start + "&" + varName2 + "=" + end;
+        }
+
+
+    }
     function openCity(cityName,elmnt,color) {
     var i, tabcontent, tablinks;
+    if (!window.location.href.includes(cityName)){
+        updateVar("city", cityName);
+        // openCity(cityName,elmnt,color);
+    }
+    // setTimeout(test,1500);
+
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
@@ -205,9 +243,12 @@
     document.getElementById(cityName).style.display = "block";
     elmnt.style.backgroundColor = color;
 
+
+
   }
+  function test(){}
   // Get the element with id="defaultOpen" and click on it
-  document.getElementById("defaultOpen").click();
+  // document.getElementById("defaultOpen").click();
 
 
 	$(function() {
@@ -219,7 +260,9 @@
            }
 			}, function(start, end) {
 			     console.log("  A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-			     window.location.href = "index.php?start="+ start.format('YYYY-MM-DD') +"&end="+end.format('YYYY-MM-DD');
+			    //  window.location.href = "index.php?start="+ start.format('YYYY-MM-DD') +"&end="+end.format('YYYY-MM-DD');
+                updateVar(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
+                // updateVar("end", end.format('YYYY-MM-DD'));
 		  });
 
       $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
@@ -233,5 +276,11 @@
 
 	});
 </script>
+
+<!-- <script>
+    if (!window.location.href.includes("?")){
+        window.location.href = window.location.href + "?start=&end=&city=";
+    }
+</script> -->
 
 </body>
