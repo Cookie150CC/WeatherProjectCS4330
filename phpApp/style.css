@@ -16,7 +16,6 @@ body{
 
 /* Style the tab buttons */
 .tablink {
-  border-radius: 10px;
   border-style: solid;
   border-width:10px;
     background-color: #555;
@@ -37,7 +36,7 @@ body{
 
 /* Set default styles for tab content */
 .tabcontent {
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
     color: white;
     display: none;
     padding: 50px;

@@ -1,17 +1,19 @@
 <?php
     include_once 'dbconnect.php';
 	include_once 'getDateRange.php';
-    $sql = "SELECT AVG(Precip) FROM precipitation WHERE Date IN (SELECT Date FROM precipitation WHERE Date BETWEEN '$start' AND '$end')";
+    $sql = "SELECT ROUND(AVG(Precip),3) AS AP FROM precipitation WHERE Date IN (SELECT Date FROM precipitation WHERE Date BETWEEN '$start' AND '$end')";
     $result = $conn->query($sql);
-	echo $sql;
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            echo "Average Precipitation" . $row["Precip"] . '\n';
-
+          if($row['AP']!=NULL){
+            $avgPrecipitationResult = $row["AP"] . "\"";
+          }else{
+            $avgPrecipitationResult = "NA";
+          }
         }
     } else {
-        echo "0 results";
+        $avgPrecipitationResult = "NA";
     }
-    $conn->close();
+
 ?>

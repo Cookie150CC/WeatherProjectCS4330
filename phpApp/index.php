@@ -10,26 +10,25 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
-</head>
+	<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 <body>
 <div id="Kalamazoo" class="tabcontent">
-  <h1>The Weather App</h1>
+  <h1>The Weather App <i class="fas fa-cloud-sun fa-2x"></i></i></h1>
   <h2>Kalamazoo, MI</h2>
 </div>
 
 <div id="Other1" class="tabcontent">
-  <h1>The Weather App</h1>
+  <h1>The Weather App <i class="fas fa-cloud-sun fa-2x"></i></i></h1>
   <h2>Other1, US</h2>
 </div>
 
 <div id="Other2" class="tabcontent">
-  <h1>The Weather App</h1>
+  <h1>The Weather App <i class="fas fa-cloud-sun fa-2x"></i></i></h1>
   <h2>Other2, US</h2>
 </div>
 
 <div id="Other3" class="tabcontent">
-  <h1>The Weather App</h1>
+  <h1>The Weather App <i class="fas fa-cloud-sun fa-2x"></i></i></h1>
   <h2>Other3, US</h2>
 </div>
 
@@ -48,19 +47,19 @@
       <h3>Most Recent Results for <?php echo $_GET['start'] . " - " . $_GET['end'];?></h3>
       <div class="row_info">
         <div class="column_info">
-          <p>Max Temperature:<?php include_once 'maxTemp.php'; echo $maxTempResult; ?></p>
-          <p>Min Temperature:</p>
-          <p>Avg Temperature:</p>
-          <p>Max Windspeed:</p>
-          <p>Avg Windspeed</p>
+          <p>Max Temperature: <?php include_once 'maxTemp.php'; echo $maxTempResult; ?></p>
+          <p>Min Temperature: <?php include_once 'minTemp.php'; echo $minTempResult; ?></p>
+          <p>Avg Temperature: <?php include_once 'avgTemp.php'; echo $avgTempResult; ?></p>
+          <p>Max Windspeed: <?php include_once 'fastestWindSpeed.php'; echo $maxWindSpeedResult; ?></p>
+          <p>Avg Windspeed: <?php include_once 'avgWindSpeed.php'; echo $avgWindSpeedResult; ?></p>
         </div>
       <div class="column_info">
-        <p>Max Precipitation:</p>
-        <p>Avg Precipitation:</p>
-        <p>Max Snowfall:</p>
-        <p>Avg Snowfall:</p>
-        <p>Max Snow Depth:</p>
-        <p>Avg Snow Depth:</p>
+        <p>Max Precipitation: <?php include_once 'maxPrecipitation.php'; echo $maxPrecipitationResult; ?></p>
+        <p>Avg Precipitation: <?php include_once 'avgPrecipitation.php'; echo $avgPrecipitationResult; ?></p>
+        <p>Max Snowfall: <?php include_once 'maxSnowfall.php'; echo $maxSnowfallResult; ?></p>
+        <p>Avg Snowfall: <?php include_once 'avgSnowfall.php'; echo $avgSnowfallResult; ?></p>
+        <p>Max Snow Depth: <?php include_once 'maxSnowDepth.php'; echo $maxSnowDepthResult; ?></p>
+        <p>Avg Snow Depth: <?php include_once 'avgSnowDepth.php'; echo $avgSnowDepthResult; ?></p>
       </div>
     </div>
     </div>
