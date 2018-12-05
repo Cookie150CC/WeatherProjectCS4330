@@ -1,0 +1,114 @@
+:root{
+  --primary: #a0a0a0;
+  --dark: #333;
+  --light: #fff;
+  --red: #4c001c;
+
+  --blueGrayDark: #336699;
+  --greenGrayDark: #339966;
+  --shadow: 0 1px 5px rgba(120, 120, 121, 0.8);
+}
+
+body{
+	background: var(--primary);
+	font-family: 'Roboto', sans-serif;
+}
+
+/* Style the tab buttons */
+.tablink {
+  border-radius: 10px;
+  border-style: solid;
+  border-width:10px;
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+  border-radius: 10px;
+    color: white;
+    display: none;
+    padding: 50px;
+    text-align: center;
+}
+
+/* Style each tab content individually */
+#Kalamazoo {background-color:var(--blueGrayDark);}
+#Other1 {background-color:var(--greenGrayDark);}
+#Other2 {background-color:var(--blueGrayDark);}
+#Other3 {background-color:var(--greenGrayDark);}
+
+.row_container{
+  border-radius: 10px;
+  background: black;
+  margin: auto;
+  margin-top: 60px;
+  width: 98.75%;
+  color: black;
+  padding:  12px;
+  text-align: center;
+
+}
+
+.row_container h2{
+  color: white;
+}
+
+.row_container input{
+  margin-bottom: 15px;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.column_info{
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.row_info:after {
+    content: "";
+    display: table;
+    clear: both;
+}
