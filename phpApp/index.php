@@ -21,6 +21,25 @@
   <li><a href="index.php?station=USW00093110">Albany, GA</a></li>
   <li><a href="index.php?station=USW00094815">Bozeman, MT</a></li>
 </ul>
+<?php
+  if(isset($_GET{"station"})){
+    if($_GET{"station"} ==  US1MTGN0011){
+      echo "<h2 class='station_title'>Kalamazoo, MI</h2>";
+    }else if($_GET{"station"} ==  USC00090140){
+      echo "<h2>Oxnard, CA</h2>";
+    }else if($_GET{"station"} ==  USC00503502){
+      echo "<h2>International Falls, MN</h2>";
+    }else if($_GET{"station"} ==  USW00014918){
+      echo "<h2>Haines, AK</h2>";
+    }else if($_GET{"station"} ==  USW00093110){
+      echo "<h2>Albany, GA</h2>";
+    }else if($_GET{"station"} ==  USW00094815){
+      echo "<h2>Bozeman, MT</h2>";
+    }
+  }else{
+    echo "<h2>Select a Station</h2>";
+  }
+?>
 
 
 <div class="row_container">
@@ -51,22 +70,31 @@
   </div>
   <div class="column">
     <div class="card">
-      <h3>Results Since 1972 for <?php echo $_GET['start'] . " - " . $_GET['end'];?></h3>
+      <h3>Results Since 1950 for
+        <?php
+              $temp = $_GET['start'];
+              $tempArr = explode("-",$temp,2);
+              echo $tempArr[1] . " - ";
+              $temp = $_GET['end'];
+              $tempArr = explode("-",$temp,2);
+              echo $tempArr[1];
+          ?>
+      </h3>
       <div class="row_info">
         <div class="column_info">
-          <p>Max Temperature:</p>
-          <p>Min Temperature:</p>
-          <p>Avg Temperature:</p>
-          <p>Max Windspeed:</p>
-          <p>Avg Windspeed</p>
+          <p>Max Temperature: <?php include_once 'histMaxTemp.php'; echo $histMaxTempResult; ?></p>
+          <p>Min Temperature: <?php include_once 'histMinTemp.php'; echo $histMinTempResult; ?></p>
+          <p>Avg Temperature: <?php include_once 'histAvgTemp.php'; echo $histAvgTempResult; ?></p>
+          <p>Max Windspeed: <?php include_once 'histFastestWindSpeed.php'; echo $histMaxWindSpeedResult; ?></p>
+          <p>Avg Windspeed: <?php include_once 'histAvgWindSpeed.php'; echo $histAvgWindSpeedResult; ?></p>
         </div>
       <div class="column_info">
-        <p>Max Precipitation:</p>
-        <p>Avg Precipitation:</p>
-        <p>Max Snowfall:</p>
-        <p>Avg Snowfall:</p>
-        <p>Max Snow Depth:</p>
-        <p>Avg Snow Depth:</p>
+        <p>Max Precipitation: <?php include_once 'histMaxPrecipitation.php'; echo $histMaxPrecipitationResult; ?></p>
+        <p>Avg Precipitation: <?php include_once 'histAvgPrecipitation.php'; echo $histAvgPrecipitationResult; ?></p>
+        <p>Max Snowfall: <?php include_once 'histMaxSnowfall.php'; echo $histMaxSnowfallResult; ?></p>
+        <p>Avg Snowfall: <?php include_once 'histAvgSnowfall.php'; echo $histAvgSnowfallResult; ?></p>
+        <p>Max Snow Depth: <?php include_once 'histMaxSnowDepth.php'; echo $histMaxSnowDepthResult; ?></p>
+        <p>Avg Snow Depth: <?php include_once 'histAvgSnowDepth.php'; echo $histAvgSnowDepthResult; ?></p>
       </div>
     </div>
     </div>
