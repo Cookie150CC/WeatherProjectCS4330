@@ -202,10 +202,12 @@
             if (tmp2[i].includes(varName1)){
                 tmp2[i] = varName1 + "=" + start;
             }
-            if (tmp2[i].includes(varName1)){
+            if (tmp2[i].includes(varName2)){
                 tmp2[i] = varName2 + "=" + end;
             }
+            console.log("tmp2[i]   ", tmp2[i], " , ", i);
         }
+        console.log("varname1, varname2   ", varName1, "     ", varName2);
 
         for(let i=0; i<tmp2.length-1; i++){
             newPart = newPart + tmp2[i] + "&";
@@ -215,7 +217,7 @@
         // console.log("base is", base);
         console.log("new part", newPart);
 
-        if (url.includes("start") && url.includes("end")){
+        if (url.includes("start") || url.includes("end")){
             window.location.href = newPart;
         }
         else{
@@ -224,32 +226,6 @@
 
 
     }
-    function openCity(cityName,elmnt,color) {
-    var i, tabcontent, tablinks;
-    if (!window.location.href.includes(cityName)){
-        updateVar("city", cityName);
-        // openCity(cityName,elmnt,color);
-    }
-    // setTimeout(test,1500);
-
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
-    }
-    document.getElementById(cityName).style.display = "block";
-    elmnt.style.backgroundColor = color;
-
-
-
-  }
-  function test(){}
-  // Get the element with id="defaultOpen" and click on it
-  // document.getElementById("defaultOpen").click();
-
 
 	$(function() {
 			$('input[name="daterange"]').daterangepicker({
