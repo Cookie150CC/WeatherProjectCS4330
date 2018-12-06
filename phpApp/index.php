@@ -16,12 +16,12 @@
 <div class="navbar">
   <h1><i class="fas fa-cloud-sun fa-2x"></i> Weather App</h1>
 <ul>
-  <li class=<?php include_once 'getStation.php'; if ($station == "US1MTGN0011"){echo "active";} else {echo "";} ?>><a href="index.php?station=US1MTGN0011"><i class="fas fa-map-marker-alt"></i> Kalamazoo, MI</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USC00090140"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00090140"><i class="fas fa-map-marker-alt"></i> Oxnard, CA</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USC00503502"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00503502"><i class="fas fa-map-marker-alt"></i> International Falls, MN</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USW00014918"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00014918"><i class="fas fa-map-marker-alt"></i> Haines, AK</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USW00093110"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00093110"><i class="fas fa-map-marker-alt"></i> Albany, GA</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USW00094815"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00094815"><i class="fas fa-map-marker-alt"></i> Bozeman, MT</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00094815"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00094815"><i class="fas fa-map-marker-alt"></i> Kalamazoo, MI</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00093110"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00093110"><i class="fas fa-map-marker-alt"></i> Oxnard, CA</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00014918"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00014918"><i class="fas fa-map-marker-alt"></i> International Falls, MN</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USC00503502"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00503502"><i class="fas fa-map-marker-alt"></i> Haines, AK</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USC00090140"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00090140"><i class="fas fa-map-marker-alt"></i> Albany, GA</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "US1MTGN0011"){echo "active";} else {echo "";} ?>><a href="index.php?station=US1MTGN0011"><i class="fas fa-map-marker-alt"></i> Bozeman, MT</a></li>
 </ul>
 </div>
 <?php
@@ -312,7 +312,37 @@
 
 
   function show_month(obj) {
-        window.location.href = window.location.href + "&month=" + obj.selectedIndex;
+    let url = window.location.href;
+    let tmp1 = url.split("?");
+    let base = tmp1[0];
+    let tmp2 = tmp1[1].split("&");
+    let newPart = "";
+    let varName="month";
+    console.log("base:  ", tmp1[1]);
+    //   let varName2="end";
+    // if (!url.includes("?")){
+    //     newPart = "?";
+    // }
+    for (let i=0; i<tmp2.length; i++){
+      if (tmp2[i].includes(varName)){
+          tmp2[i] = varName + "=" + obj.selectedIndex;
+      }
+    }
+    for(let i=0; i<tmp2.length-1; i++){
+      newPart = newPart + tmp2[i] + "&";
+    }
+    newPart = newPart + tmp2[tmp2.length-1]
+
+    // console.log("base is", base);
+    // console.log("new part", newPart);
+
+    if (url.includes("month")){
+      window.location.href = "index.php?" + newPart;
+    }
+    else{
+      window.location.href = "index.php?" + newPart + "&" + varName + "=" + obj.selectedIndex;
+    }
+    // window.location.href = window.location.href + "&month=" + obj.selectedIndex;
 }
 </script>
 
