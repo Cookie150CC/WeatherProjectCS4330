@@ -82,6 +82,8 @@ select{
 
 .row_container h2{
   color: white;
+  font-size: 1.75rem;
+
 }
 
 .row_container input{
@@ -117,12 +119,17 @@ select{
   text-align: center;
   background-color: var(--primary);
   border-radius: 10px;
+  font-size: 1.18rem;
 }
 
 .column_info{
   float: left;
   width: 50%;
   padding: 10px;
+}
+
+.column_info p{
+  padding-top: 7.5px;
 }
 
 .row_info:after {
