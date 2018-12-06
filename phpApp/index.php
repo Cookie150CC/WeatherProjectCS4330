@@ -16,27 +16,27 @@
 <div class="navbar">
   <h1><i class="fas fa-cloud-sun fa-2x"></i> Weather App</h1>
 <ul>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USW00094815"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00094815"><i class="fas fa-map-marker-alt"></i> Kalamazoo, MI</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USW00093110"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00093110"><i class="fas fa-map-marker-alt"></i> Oxnard, CA</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USW00014918"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00014918"><i class="fas fa-map-marker-alt"></i> International Falls, MN</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USC00503502"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00503502"><i class="fas fa-map-marker-alt"></i> Haines, AK</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USC00090140"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00090140"><i class="fas fa-map-marker-alt"></i> Albany, GA</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "US1MTGN0011"){echo "active";} else {echo "";} ?>><a href="index.php?station=US1MTGN0011"><i class="fas fa-map-marker-alt"></i> Bozeman, MT</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00094815"){echo "active";} else {echo "";} ?>><a href=<?php include_once 'getMonth.php'; include_once 'getDateRange.php'; echo "index.php?station=USW00094815" . "&start=" . $start . "&end=" . $end . "&month=" . $month;  ?>><i class="fas fa-map-marker-alt"></i> Kalamazoo, MI</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00093110"){echo "active";} else {echo "";} ?>><a href=<?php include_once 'getMonth.php'; include_once 'getDateRange.php'; echo "index.php?station=USW00093110" . "&start=" . $start . "&end=" . $end . "&month=" . $month;  ?>><i class="fas fa-map-marker-alt"></i> Oxnard, CA</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00014918"){echo "active";} else {echo "";} ?>><a href=<?php include_once 'getMonth.php'; include_once 'getDateRange.php'; echo "index.php?station=USW00014918" . "&start=" . $start . "&end=" . $end . "&month=" . $month;  ?>><i class="fas fa-map-marker-alt"></i> International Falls, MN</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USC00503502"){echo "active";} else {echo "";} ?>><a href=<?php include_once 'getMonth.php'; include_once 'getDateRange.php'; echo "index.php?station=USC00503502" . "&start=" . $start . "&end=" . $end . "&month=" . $month;  ?>><i class="fas fa-map-marker-alt"></i> Haines, AK</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USC00090140"){echo "active";} else {echo "";} ?>><a href=<?php include_once 'getMonth.php'; include_once 'getDateRange.php'; echo "index.php?station=USC00090140" . "&start=" . $start . "&end=" . $end . "&month=" . $month;  ?>><i class="fas fa-map-marker-alt"></i> Albany, GA</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "US1MTGN0011"){echo "active";} else {echo "";} ?>><a href=<?php include_once 'getMonth.php'; include_once 'getDateRange.php'; echo "index.php?station=US1MTGN0011" . "&start=" . $start . "&end=" . $end . "&month=" . $month;  ?>><i class="fas fa-map-marker-alt"></i> Bozeman, MT</a></li>
 </ul>
 </div>
 <?php
   if(isset($_GET{"station"})){
-    if($_GET{"station"} ==  US1MTGN0011){
+    if($_GET{"station"} ==  USW00094815){
       echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Kalamazoo, MI</h2>";
-    }else if($_GET{"station"} ==  USC00090140){
-      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Oxnard, CA</h2>";
-    }else if($_GET{"station"} ==  USC00503502){
-      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> International Falls, MN</h2>";
-    }else if($_GET{"station"} ==  USW00014918){
-      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Haines, AK</h2>";
     }else if($_GET{"station"} ==  USW00093110){
+      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Oxnard, CA</h2>";
+    }else if($_GET{"station"} ==  USW00014918){
+      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> International Falls, MN</h2>";
+    }else if($_GET{"station"} ==  USC00503502){
+      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Haines, AK</h2>";
+    }else if($_GET{"station"} ==  USC00090140){
       echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Albany, GA</h2>";
-    }else if($_GET{"station"} ==  USW00094815){
+    }else if($_GET{"station"} ==  US1MTGN0011){
       echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Bozeman, MT</h2>";
     }
   }else{
@@ -47,7 +47,7 @@
 
 <div class="row_container">
   <h2><i class="far fa-calendar-alt"></i> Choose a Date Range: </h2>
-   <input type="text" name="daterange" value=""/>
+   <input type="text" name="daterange" value=<?php include_once 'getDateRange.php'; echo "10/2/2018 - 10/21/2018"; ?>/>
   <div class="row">
   <div class="column">
     <div class="card">
@@ -174,56 +174,6 @@
 </div>
 </div>
 
-<div class="row_container">
-  <h2>Choose a Date Range: </h2>
-   <input type="text" name="daterange" value=""/>
-  <div class="row">
-  <div class="column">
-    <div class="card">
-      <h3>Most Recent Results for <?php echo $_GET['start'] . " - " . $_GET['end'];?></h3>
-      <div class="row_info">
-        <div class="column_info">
-          <p>Max Temperature:<?php include_once 'maxTemp.php'; echo $maxTempResult; ?></p>
-          <p>Min Temperature:</p>
-          <p>Avg Temperature:</p>
-          <p>Max Windspeed:</p>
-          <p>Avg Windspeed</p>
-        </div>
-      <div class="column_info">
-        <p>Max Precipitation:</p>
-        <p>Avg Precipitation:</p>
-        <p>Max Snowfall:</p>
-        <p>Avg Snowfall:</p>
-        <p>Max Snow Depth:</p>
-        <p>Avg Snow Depth:</p>
-      </div>
-    </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <h3>Results Since 1972 for <?php echo $_GET['start'] . " - " . $_GET['end'];?></h3>
-      <div class="row_info">
-        <div class="column_info">
-          <p>Max Temperature:</p>
-          <p>Min Temperature:</p>
-          <p>Avg Temperature:</p>
-          <p>Max Windspeed:</p>
-          <p>Avg Windspeed</p>
-        </div>
-      <div class="column_info">
-        <p>Max Precipitation:</p>
-        <p>Avg Precipitation:</p>
-        <p>Max Snowfall:</p>
-        <p>Avg Snowfall:</p>
-        <p>Max Snow Depth:</p>
-        <p>Avg Snow Depth:</p>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-</div>
 
 <script>
     function active(tab){
@@ -256,7 +206,7 @@
             }
             console.log("tmp2[i]   ", tmp2[i], " , ", i);
         }
-        console.log("varname1, varname2   ", varName1, "     ", varName2);
+        // console.log("varname1, varname2   ", varName1, "     ", varName2);
 
         for(let i=0; i<tmp2.length-1; i++){
             newPart = newPart + tmp2[i] + "&";
@@ -278,6 +228,7 @@
 
 	$(function() {
 			$('input[name="daterange"]').daterangepicker({
+                cookie: 'yes',
   			   opens: 'right',
            autoUpdateInput: true,
            locale:{
@@ -291,6 +242,7 @@
 		  });
 
       $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
+          console.log("start date:   ", picker.startDate);
           $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
         });
 
@@ -346,10 +298,10 @@
 }
 </script>
 
-<!-- <script>
+<script>
     if (!window.location.href.includes("?")){
-        window.location.href = window.location.href + "?start=&end=&city=";
+        window.location.href = window.location.href + "?station=USW00094815&start=2018-06-01&end=2018-06-30&month=6";
     }
-</script> -->
+</script>
 
 </body>
