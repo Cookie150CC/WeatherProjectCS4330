@@ -107,50 +107,66 @@
 </div>
 </div>
 
+
+
 <div class="row_container">
-  <h2>Choose a Date Range: </h2>
-   <input type="text" name="daterange" value=""/>
+  <h2><i class="far fa-calendar-minus"></i> Choose a Month:</h2>
+  <select id='month' onchange="show_month(this)">
+     <option value=''>--Select Month--</option>
+     <option value='1'>Janaury</option>
+     <option value='2'>February</option>
+     <option value='3'>March</option>
+     <option value='4'>April</option>
+     <option value='5'>May</option>
+     <option value='6'>June</option>
+     <option value='7'>July</option>
+     <option value='8'>August</option>
+     <option value='9'>September</option>
+     <option value='10'>October</option>
+     <option value='11'>November</option>
+     <option value='12'>December</option>
+   </select>
   <div class="row">
   <div class="column">
     <div class="card">
-      <h3>Most Recent Results for <?php echo $_GET['start'] . " - " . $_GET['end'];?></h3>
+      <h3>Most Recent Results for <?php if(isset($_GET{"month"})){ include_once 'getMonthString.php'; echo $monthString; } ?></h3>
       <div class="row_info">
         <div class="column_info">
-          <p>Max Temperature:<?php include_once 'maxTemp.php'; echo $maxTempResult; ?></p>
-          <p>Min Temperature:</p>
-          <p>Avg Temperature:</p>
-          <p>Max Windspeed:</p>
-          <p>Avg Windspeed</p>
+          <p><i class="fas fa-temperature-high"></i> Max Temperature: <?php include_once 'monthMaxTemp.php'; echo $monthMaxTempResult; ?></p>
+          <p><i class="fas fa-temperature-low"></i> Min Temperature: <?php include_once 'monthMinTemp.php'; echo $monthMinTempResult; ?></p>
+          <p><i class="fas fa-thermometer-half"></i> Avg Temperature: <?php include_once 'monthAvgTemp.php'; echo $monthAvgTempResult; ?></p>
+          <p><i class="fas fa-wind"></i> Max Windspeed: <?php include_once 'monthFastestWindSpeed.php'; echo $monthMaxWindSpeedResult; ?></p>
+          <p><i class="fas fa-wind"></i> Avg Windspeed: <?php include_once 'monthAvgWindSpeed.php'; echo $monthAvgWindSpeedResult; ?></p>
         </div>
       <div class="column_info">
-        <p>Max Precipitation:</p>
-        <p>Avg Precipitation:</p>
-        <p>Max Snowfall:</p>
-        <p>Avg Snowfall:</p>
-        <p>Max Snow Depth:</p>
-        <p>Avg Snow Depth:</p>
+        <p><i class="fas fa-cloud-showers-heavy"></i> Max Precipitation: <?php include_once 'monthMaxPrecipitation.php'; echo $monthMaxPrecipitationResult; ?></p>
+        <p><i class="fas fa-cloud-rain"></i> Avg Precipitation: <?php include_once 'monthAvgPrecipitation.php'; echo $monthAvgPrecipitationResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Max Snowfall: <?php include_once 'monthMaxSnowfall.php'; echo $monthMaxSnowfallResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Avg Snowfall: <?php include_once 'monthAvgSnowfall.php'; echo $monthAvgSnowfallResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Max Snow Depth: <?php include_once 'monthMaxSnowDepth.php'; echo $monthMaxSnowDepthResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Avg Snow Depth: <?php include_once 'monthAvgSnowDepth.php'; echo $monthAvgSnowDepthResult; ?></p>
       </div>
     </div>
     </div>
   </div>
   <div class="column">
     <div class="card">
-      <h3>Results Since 1972 for <?php echo $_GET['start'] . " - " . $_GET['end'];?></h3>
+      <h3>Results Since 1972 for <?php if(isset($_GET{"month"})){ include_once 'getMonthString.php'; echo $monthString; } ?></h3>
       <div class="row_info">
         <div class="column_info">
-          <p>Max Temperature:</p>
-          <p>Min Temperature:</p>
-          <p>Avg Temperature:</p>
-          <p>Max Windspeed:</p>
-          <p>Avg Windspeed</p>
+          <p><i class="fas fa-temperature-high"></i> Max Temperature: <?php include_once 'monthHistMaxTemp.php'; echo $monthHistMaxTempResult; ?></p>
+          <p><i class="fas fa-temperature-low"></i> Min Temperature: <?php include_once 'monthHistMinTemp.php'; echo $monthHistMinTempResult; ?></p>
+          <p><i class="fas fa-thermometer-half"></i> Avg Temperature: <?php include_once 'monthHistAvgTemp.php'; echo $monthHistAvgTempResult; ?></p>
+          <p><i class="fas fa-wind"></i> Max Windspeed: <?php include_once 'monthHistFastestWindSpeed.php'; echo $monthHistMaxWindSpeedResult; ?></p>
+          <p><i class="fas fa-wind"></i> Avg Windspeed: <?php include_once 'monthHistAvgWindSpeed.php'; echo $monthHistAvgWindSpeedResult; ?></p>
         </div>
       <div class="column_info">
-        <p>Max Precipitation:</p>
-        <p>Avg Precipitation:</p>
-        <p>Max Snowfall:</p>
-        <p>Avg Snowfall:</p>
-        <p>Max Snow Depth:</p>
-        <p>Avg Snow Depth:</p>
+        <p><i class="fas fa-cloud-showers-heavy"></i> Max Precipitation: <?php include_once 'monthHistMaxPrecipitation.php'; echo $monthHistMaxPrecipitationResult; ?></p>
+        <p><i class="fas fa-cloud-rain"></i> Avg Precipitation: <?php include_once 'monthHistAvgPrecipitation.php'; echo $monthHistAvgPrecipitationResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Max Snowfall: <?php include_once 'monthHistMaxSnowfall.php'; echo $monthHistMaxSnowfallResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Avg Snowfall: <?php include_once 'monthHistAvgSnowfall.php'; echo $monthHistAvgSnowfallResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Max Snow Depth: <?php include_once 'monthHistMaxSnowDepth.php'; echo $monthHistMaxSnowDepthResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Avg Snow Depth: <?php include_once 'monthHistAvgSnowDepth.php'; echo $monthHistAvgSnowDepthResult; ?></p>
       </div>
     </div>
     </div>
@@ -293,6 +309,11 @@
 
 
 	});
+
+
+  function show_month(obj) {
+        window.location.href = window.location.href + "&month=" + obj.selectedIndex;
+}
 </script>
 
 <!-- <script>
