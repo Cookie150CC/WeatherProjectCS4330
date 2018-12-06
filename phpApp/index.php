@@ -13,88 +13,93 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 <body>
 
+<div class="navbar">
+  <h1><i class="fas fa-cloud-sun fa-2x"></i> Weather App</h1>
 <ul>
-  <li class=<?php include_once 'getStation.php'; if ($station == "US1MTGN0011"){echo "active";} else {echo "";} ?>><a href="index.php?station=US1MTGN0011">Kalamazoo, MI</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USC00090140"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00090140">Oxnard, CA</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USC00503502"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00503502">International Falls, MN</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USW00014918"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00014918">Haines, AK</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USW00093110"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00093110">Albany, GA</a></li>
-  <li class=<?php include_once 'getStation.php'; if ($station == "USW00094815"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00094815">Bozeman, MT</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "US1MTGN0011"){echo "active";} else {echo "";} ?>><a href="index.php?station=US1MTGN0011"><i class="fas fa-map-marker-alt"></i> Kalamazoo, MI</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USC00090140"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00090140"><i class="fas fa-map-marker-alt"></i> Oxnard, CA</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USC00503502"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00503502"><i class="fas fa-map-marker-alt"></i> International Falls, MN</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00014918"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00014918"><i class="fas fa-map-marker-alt"></i> Haines, AK</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00093110"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00093110"><i class="fas fa-map-marker-alt"></i> Albany, GA</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00094815"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00094815"><i class="fas fa-map-marker-alt"></i> Bozeman, MT</a></li>
 </ul>
+</div>
 <?php
   if(isset($_GET{"station"})){
     if($_GET{"station"} ==  US1MTGN0011){
-      echo "<h2 class='station_title'>Kalamazoo, MI</h2>";
+      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Kalamazoo, MI</h2>";
     }else if($_GET{"station"} ==  USC00090140){
-      echo "<h2>Oxnard, CA</h2>";
+      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Oxnard, CA</h2>";
     }else if($_GET{"station"} ==  USC00503502){
-      echo "<h2>International Falls, MN</h2>";
+      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> International Falls, MN</h2>";
     }else if($_GET{"station"} ==  USW00014918){
-      echo "<h2>Haines, AK</h2>";
+      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Haines, AK</h2>";
     }else if($_GET{"station"} ==  USW00093110){
-      echo "<h2>Albany, GA</h2>";
+      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Albany, GA</h2>";
     }else if($_GET{"station"} ==  USW00094815){
-      echo "<h2>Bozeman, MT</h2>";
+      echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Bozeman, MT</h2>";
     }
   }else{
-    echo "<h2>Select a Station</h2>";
+    echo "<h2 class='station_title'><i class='fas fa-map-marked-alt fa-2x'></i> Select a Station</h2>";
   }
 ?>
 
 
 <div class="row_container">
-  <h2>Choose a Date Range: </h2>
+  <h2><i class="far fa-calendar-alt"></i> Choose a Date Range: </h2>
    <input type="text" name="daterange" value=""/>
   <div class="row">
   <div class="column">
     <div class="card">
-      <h3>Most Recent Results for <?php echo $_GET['start'] . " - " . $_GET['end'];?></h3>
+      <h3><i class="fas fa-chart-line"></i> Most Recent Results for <?php if(isset($_GET{"start"})){echo $_GET['start'] . " - " . $_GET['end'];}?></h3>
       <div class="row_info">
         <div class="column_info">
-          <p>Max Temperature: <?php include_once 'maxTemp.php'; echo $maxTempResult; ?></p>
-          <p>Min Temperature: <?php include_once 'minTemp.php'; echo $minTempResult; ?></p>
-          <p>Avg Temperature: <?php include_once 'avgTemp.php'; echo $avgTempResult; ?></p>
-          <p>Max Windspeed: <?php include_once 'fastestWindSpeed.php'; echo $maxWindSpeedResult; ?></p>
-          <p>Avg Windspeed: <?php include_once 'avgWindSpeed.php'; echo $avgWindSpeedResult; ?></p>
+          <p><i class="fas fa-temperature-high"></i> Max Temperature: <?php include_once 'maxTemp.php'; echo $maxTempResult; ?></p>
+          <p><i class="fas fa-temperature-low"></i> Min Temperature: <?php include_once 'minTemp.php'; echo $minTempResult; ?></p>
+          <p><i class="fas fa-thermometer-half"></i> Avg Temperature: <?php include_once 'avgTemp.php'; echo $avgTempResult; ?></p>
+          <p><i class="fas fa-wind"></i> Max Windspeed: <?php include_once 'fastestWindSpeed.php'; echo $maxWindSpeedResult; ?></p>
+          <p><i class="fas fa-wind"></i> Avg Windspeed: <?php include_once 'avgWindSpeed.php'; echo $avgWindSpeedResult; ?></p>
         </div>
       <div class="column_info">
-        <p>Max Precipitation: <?php include_once 'maxPrecipitation.php'; echo $maxPrecipitationResult; ?></p>
-        <p>Avg Precipitation: <?php include_once 'avgPrecipitation.php'; echo $avgPrecipitationResult; ?></p>
-        <p>Max Snowfall: <?php include_once 'maxSnowfall.php'; echo $maxSnowfallResult; ?></p>
-        <p>Avg Snowfall: <?php include_once 'avgSnowfall.php'; echo $avgSnowfallResult; ?></p>
-        <p>Max Snow Depth: <?php include_once 'maxSnowDepth.php'; echo $maxSnowDepthResult; ?></p>
-        <p>Avg Snow Depth: <?php include_once 'avgSnowDepth.php'; echo $avgSnowDepthResult; ?></p>
+        <p><i class="fas fa-cloud-showers-heavy"></i> Max Precipitation: <?php include_once 'maxPrecipitation.php'; echo $maxPrecipitationResult; ?></p>
+        <p><i class="fas fa-cloud-rain"></i> Avg Precipitation: <?php include_once 'avgPrecipitation.php'; echo $avgPrecipitationResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Max Snowfall: <?php include_once 'maxSnowfall.php'; echo $maxSnowfallResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Avg Snowfall: <?php include_once 'avgSnowfall.php'; echo $avgSnowfallResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Max Snow Depth: <?php include_once 'maxSnowDepth.php'; echo $maxSnowDepthResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Avg Snow Depth: <?php include_once 'avgSnowDepth.php'; echo $avgSnowDepthResult; ?></p>
       </div>
     </div>
     </div>
   </div>
   <div class="column">
     <div class="card">
-      <h3>Results Since 1950 for
+      <h3><i class="fas fa-chart-line"></i> Results Since 1950 for
         <?php
+            if(isset($_GET{"start"})){
               $temp = $_GET['start'];
               $tempArr = explode("-",$temp,2);
               echo $tempArr[1] . " - ";
               $temp = $_GET['end'];
               $tempArr = explode("-",$temp,2);
               echo $tempArr[1];
+            }
           ?>
       </h3>
       <div class="row_info">
         <div class="column_info">
-          <p>Max Temperature: <?php include_once 'histMaxTemp.php'; echo $histMaxTempResult; ?></p>
-          <p>Min Temperature: <?php include_once 'histMinTemp.php'; echo $histMinTempResult; ?></p>
-          <p>Avg Temperature: <?php include_once 'histAvgTemp.php'; echo $histAvgTempResult; ?></p>
-          <p>Max Windspeed: <?php include_once 'histFastestWindSpeed.php'; echo $histMaxWindSpeedResult; ?></p>
-          <p>Avg Windspeed: <?php include_once 'histAvgWindSpeed.php'; echo $histAvgWindSpeedResult; ?></p>
+          <p><i class="fas fa-temperature-high"></i> Max Temperature: <?php include_once 'histMaxTemp.php'; echo $histMaxTempResult; ?></p>
+          <p><i class="fas fa-temperature-low"></i> Min Temperature: <?php include_once 'histMinTemp.php'; echo $histMinTempResult; ?></p>
+          <p><i class="fas fa-thermometer-half"></i> Avg Temperature: <?php include_once 'histAvgTemp.php'; echo $histAvgTempResult; ?></p>
+          <p><i class="fas fa-wind"></i> Max Windspeed: <?php include_once 'histFastestWindSpeed.php'; echo $histMaxWindSpeedResult; ?></p>
+          <p><i class="fas fa-wind"></i> Avg Windspeed: <?php include_once 'histAvgWindSpeed.php'; echo $histAvgWindSpeedResult; ?></p>
         </div>
       <div class="column_info">
-        <p>Max Precipitation: <?php include_once 'histMaxPrecipitation.php'; echo $histMaxPrecipitationResult; ?></p>
-        <p>Avg Precipitation: <?php include_once 'histAvgPrecipitation.php'; echo $histAvgPrecipitationResult; ?></p>
-        <p>Max Snowfall: <?php include_once 'histMaxSnowfall.php'; echo $histMaxSnowfallResult; ?></p>
-        <p>Avg Snowfall: <?php include_once 'histAvgSnowfall.php'; echo $histAvgSnowfallResult; ?></p>
-        <p>Max Snow Depth: <?php include_once 'histMaxSnowDepth.php'; echo $histMaxSnowDepthResult; ?></p>
-        <p>Avg Snow Depth: <?php include_once 'histAvgSnowDepth.php'; echo $histAvgSnowDepthResult; ?></p>
+        <p><i class="fas fa-cloud-showers-heavy"></i> Max Precipitation: <?php include_once 'histMaxPrecipitation.php'; echo $histMaxPrecipitationResult; ?></p>
+        <p><i class="fas fa-cloud-rain"></i> Avg Precipitation: <?php include_once 'histAvgPrecipitation.php'; echo $histAvgPrecipitationResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Max Snowfall: <?php include_once 'histMaxSnowfall.php'; echo $histMaxSnowfallResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Avg Snowfall: <?php include_once 'histAvgSnowfall.php'; echo $histAvgSnowfallResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Max Snow Depth: <?php include_once 'histMaxSnowDepth.php'; echo $histMaxSnowDepthResult; ?></p>
+        <p><i class="fas fa-snowflake"></i> Avg Snow Depth: <?php include_once 'histAvgSnowDepth.php'; echo $histAvgSnowDepthResult; ?></p>
       </div>
     </div>
     </div>

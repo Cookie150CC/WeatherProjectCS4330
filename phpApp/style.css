@@ -156,9 +156,10 @@ li a {
 }
 
 li a:hover:not(.active) {
-  background-color: #111;
+  background-color: var(--dark);
 }
 
 .active {
-  background-color: #4CAF50;
+  background-color: var(--dark);
+
 }
