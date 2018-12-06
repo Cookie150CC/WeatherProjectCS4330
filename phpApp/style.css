@@ -10,10 +10,21 @@
 }
 
 body{
-	background: var(--primary);
+	background: var(--dark);
 	font-family: 'Roboto', sans-serif;
 }
 
+.station_title{
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+}
+
+input[type=text]{
+  border: 2px solid var(--primary);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
 /* Style the tab buttons */
 .tablink {
   border-style: solid;
@@ -50,14 +61,15 @@ body{
 #Other3 {background-color:var(--greenGrayDark);}
 
 .row_container{
-  border-radius: 10px;
-  background: black;
+  border-radius: 3px;
+  background: var(--blueGrayDark);
   margin: auto;
   margin-top: 60px;
-  width: 98.75%;
+  width: 100%;
   color: black;
   padding:  12px;
   text-align: center;
+  box-shadow: var(--shadow);
 
 }
 
@@ -96,7 +108,7 @@ body{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   padding: 16px;
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: var(--primary);
   border-radius: 10px;
 }
 
@@ -112,16 +124,27 @@ body{
     clear: both;
 }
 
-ul {
-  list-style-type: none;
+.navbar{
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: var(--blueGrayDark);
+  border-radius: 3px;
+  box-shadow: var(--shadow);
+  color: White;
+}
+
+.navbar h1{
+  padding-left: 25px;
+
+}
+
+ul {
+  list-style-type: none;
 }
 
 li {
-  float: left;
+  float: right;
 }
 
 li a {
