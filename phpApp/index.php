@@ -14,12 +14,12 @@
 <body>
 
 <ul>
-  <li><a href="index.php?station=US1MTGN0011">Kalamazoo, MI</a></li>
-  <li><a href="index.php?station=USC00090140">Oxnard, CA</a></li>
-  <li><a href="index.php?station=USC00503502">International Falls, MN</a></li>
-  <li><a href="index.php?station=USW00014918">Haines, AK</a></li>
-  <li><a href="index.php?station=USW00093110">Albany, GA</a></li>
-  <li><a href="index.php?station=USW00094815">Bozeman, MT</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "US1MTGN0011"){echo "active";} else {echo "";} ?>><a href="index.php?station=US1MTGN0011">Kalamazoo, MI</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USC00090140"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00090140">Oxnard, CA</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USC00503502"){echo "active";} else {echo "";} ?>><a href="index.php?station=USC00503502">International Falls, MN</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00014918"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00014918">Haines, AK</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00093110"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00093110">Albany, GA</a></li>
+  <li class=<?php include_once 'getStation.php'; if ($station == "USW00094815"){echo "active";} else {echo "";} ?>><a href="index.php?station=USW00094815">Bozeman, MT</a></li>
 </ul>
 <?php
   if(isset($_GET{"station"})){
@@ -276,6 +276,15 @@
         $('input[name="daterange"]').on('cancel.daterangepicker', function(ev, picker) {
           $(this).val('');
         });
+
+    // $(function() {
+    //     $("li").click(function() {
+    //         // remove classes from all
+    //         $("li").removeClass("active");
+    //         // add class to the one we clicked
+    //         $(this).addClass("active");
+    //     });
+    // });
 
 
 	});
